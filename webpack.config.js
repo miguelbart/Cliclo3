@@ -18,10 +18,18 @@ module.exports={
                 test:/\.vue$/,
                 loader:'vue-loader'
                 
-            }
+            },{
+                test: /\.css/,
+                use: ['vue-style-loader', 'css-loader'] // ¡AMBOS son necesarios!
+              }
         ]
         
     },
+    externals: {
+        // require ("jquery") es externo y está disponible
+        // en la var global jQuery
+        "jquery": "jQuery"
+        },
     plugins:[
         new VueLoaderPlugin()
     ]
